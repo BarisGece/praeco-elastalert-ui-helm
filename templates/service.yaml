@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "praeco_elastalert_ui.fullname" . }}
+  name: {{ include "praeco-elastalert-ui.fullname" . }}
   labels:
-{{ include "praeco_elastalert_ui.labels" . | indent 4 }}
+{{ include "praeco-elastalert-ui.labels" . | indent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "praeco_elastalert_ui.name" . }}
+    app.kubernetes.io/name: {{ include "praeco-elastalert-ui.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

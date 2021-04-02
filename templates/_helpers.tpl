@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "praeco_elastalert_ui.name" -}}
+{{- define "praeco-elastalert-ui.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "praeco_elastalert_ui.fullname" -}}
+{{- define "praeco-elastalert-ui.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "praeco_elastalert_ui.chart" -}}
+{{- define "praeco-elastalert-ui.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "praeco_elastalert_ui.labels" -}}
-app.kubernetes.io/name: {{ include "praeco_elastalert_ui.name" . }}
-helm.sh/chart: {{ include "praeco_elastalert_ui.chart" . }}
+{{- define "praeco-elastalert-ui.labels" -}}
+app.kubernetes.io/name: {{ include "praeco-elastalert-ui.name" . }}
+helm.sh/chart: {{ include "praeco-elastalert-ui.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -47,9 +47,9 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "praeco_elastalert_ui.serviceAccountName" -}}
+{{- define "praeco-elastalert-ui.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "praeco_elastalert_ui.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "praeco-elastalert-ui.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}

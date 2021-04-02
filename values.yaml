@@ -1,4 +1,4 @@
-# Default values for praeco_elastalert_ui.
+# Default values for praeco-elastalert-ui.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -67,7 +67,7 @@ tolerations: []
 
 affinity: {}
 
-praeco_elastalert_ui:
+praeco-elastalert-ui:
   schema: http
-  external_host: praeco_elastalert_ui
+  external_host: praeco-elastalert-ui
   port: 8080
