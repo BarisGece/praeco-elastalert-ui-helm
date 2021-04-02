@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "praeco_elastalert_ui.fullname" . }}-nginx-default-config
+  name: {{ template "praeco-elastalert-ui.fullname" . }}-nginx-default-config
   labels:
-    app: {{ template "praeco_elastalert_ui.name" . }}
+    app: {{ template "praeco-elastalert-ui.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -18,12 +18,12 @@ data:
 
       location /api {
           rewrite ^/api/?(.*)$ /$1 break;
-          proxy_pass http://{{ template "praeco_elastalert_ui.name" . }}-elastalert:3030/;
+          proxy_pass http://{{ template "praeco-elastalert-ui.name" . }}-elastalert:3030/;
       }
 
       location /api-ws {
           rewrite ^/api-ws/?(.*)$ /$1 break;
-          proxy_pass http://{{ template "praeco_elastalert_ui.name" . }}-elastalert:3333/;
+          proxy_pass http://{{ template "praeco-elastalert-ui.name" . }}-elastalert:3333/;
           proxy_http_version 1.1;
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection "Upgrade";
