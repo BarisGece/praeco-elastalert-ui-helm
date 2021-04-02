@@ -1,12 +1,10 @@
-# Praeco Elastaler UI Helm Chart
+# Praeco Elastalert UI Helm Chart
 
 **This Helm Chart is Beta Release.**
 
-[**`Praeco`**](https://github.com/johnsusek/praeco) is a very useful Web GUI for [**`ElastAlert - Jertel Fork`**](https://github.com/jertel/elastalert).
+[**`Praeco`**](https://github.com/johnsusek/praeco) is a very useful Web GUI for [**`Elastalert - Jertel Fork`**](https://github.com/jertel/elastalert).
 
-[**`ElastAlert - Jertel Fork`**](https://github.com/jertel/elastalert). is a simple framework for alerting on anomalies, spikes, or other patterns of interest from data in Elasticsearch.
-
-**`This chart supports only ES7`**
+[**`Elastalert - Jertel Fork`**](https://github.com/jertel/elastalert). is a simple framework for alerting on anomalies, spikes, or other patterns of interest from data in Elasticsearch.
 
 ## Installing the Chart
 
