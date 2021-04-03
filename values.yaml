@@ -73,3 +73,4 @@ praecoElastalertUI:
   schema: http
   external_host: elastalert
   port: 8080
+  server_path: "<service.name>.<namespace name>.svc.cluster.local"
