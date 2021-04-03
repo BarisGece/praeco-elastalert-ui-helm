@@ -1,16 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "praeco-elastalert-ui.fullname" . }}-config
+  name: {{ template "praecoElastalertUI.fullname" . }}-config
   labels:
-    app: {{ template "praeco-elastalert-ui.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+{{ include "praecoElastalertUI.labels" . | indent 4 }}
 data:
-  praeco-elastalert-ui_config: |-
+  praeco-elastalert-ui-config: |-
     {
-      "appUrl": "{{ .Values.praeco-elastalert-ui.schema }}://{{ .Values.praeco-elastalert-ui.external_host }}:{{ .Values.praeco-elastalert-ui.port }}",
+      "appUrl": "{{ .Values.praecoElastalertUI.schema }}://{{ .Values.praecoElastalertUI.external_host }}:{{ .Values.praecoElastalertUI.port }}",
       "errorLoggerUrl": "",
       "hidePreconfiguredFields": []
     }

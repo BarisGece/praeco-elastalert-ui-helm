@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: {{ include "praeco-elastalert-ui.fullname" . }}
+  name: {{ include "praecoElastalertUI.fullname" . }}
   labels:
-{{ include "praeco-elastalert-ui.labels" . | indent 4 }}
+{{ include "praecoElastalertUI.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "praeco-elastalert-ui.name" . }}
+      app.kubernetes.io/name: {{ include "praecoElastalertUI.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "praeco-elastalert-ui.name" . }}
+        app.kubernetes.io/name: {{ include "praecoElastalertUI.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ template "praeco-elastalert-ui.serviceAccountName" . }}
+      serviceAccountName: {{ template "praecoElastalertUI.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -68,19 +68,19 @@ spec:
       volumes:
         - name: nginx-conf
           configMap:
-            name: {{ template "praeco-elastalert-ui.fullname" . }}-nginx-config
+            name: {{ template "praecoElastalertUI.fullname" . }}-nginx-config
             items:
             - key: nginx_config
               path: nginx.conf
         - name: default-conf
           configMap:
-            name: {{ template "praeco-elastalert-ui.fullname" . }}-nginx-default-config
+            name: {{ template "praecoElastalertUI.fullname" . }}-nginx-default-config
             items:
             - key: nginx_config_default
               path: default.conf
         - name: praeco-elastalert-ui-config
           configMap:
-            name: {{ template "praeco-elastalert-ui.fullname" . }}-config
+            name: {{ template "praecoElastalertUI.fullname" . }}-config
             items:
-            - key: praeco-elastalert-ui_config
-              path: praeco-elastalert-ui.config.json
+            - key: praeco-elastalert-ui-config
+              path: praeco.config.json
